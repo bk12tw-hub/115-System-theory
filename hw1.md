@@ -10,7 +10,8 @@ $$
 $du$ denotes a change in vector $u$. By substituting the Taylor expansion into this definition and subtracting $L(u)$ from both sides, we obtain the final expression for the variation:
 $$
 dL = L_u^Tdu + \frac{1}{2}du^TL_{uu}du + O(3).
-$$where:
+$$
+where:
 * $L_{u}$ is the gradient vector (first-order partial derivatives) evaluated at $u$.
 
 * $L_{uu}$ is the Hessian matrix (second-order partial derivatives) evaluated at $u$.
