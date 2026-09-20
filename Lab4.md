@@ -8,9 +8,12 @@
 
 * **Reflection**: act-reflect-refine, optimizing results through self-criticism and correction.
 The process can be expressed as:
+
 $$
 (th_t, a_t)=\pi (q, (a_1,o_1),(a_2,o_2),...(a_{t-1}, o_{t-1}))
+
 $$
+
 #### ReAct
 Thought -> Action -> Observation loop
 
