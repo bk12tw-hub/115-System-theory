@@ -408,3 +408,29 @@ Coding Implementation:
             Action: Finish[38069.25]
             Thought: The calculation has already been performed and the result is 38069.25. I can now provide the final answer.
             🎉 Final Answer: 38069.25
+      
+### Homework
+1. Compare the Three Paradigms
+
+
+    | Paradigm | Main idea | Strength | Typical use |
+    | :--- | :--- | :--- |:--- |
+    | ReAct |     |      |     |
+    | Plan-and-Solve |  |  | |
+    | Reflection |  |  | |
+
+
+2. Paradigm Matching
+
+        A.
+        A smart-home assistant needs to answer:
+        "Is the bedroom window open? If it is open, close it."
+
+        B.
+        A student asks:
+        "Plan a two-day study schedule for my upcoming exams."
+
+        C.
+        An LLM generates a Python program, runs it, observes an error, and revises the program.
+
+    Please match the scenarios with the correct paradigm: ReAct, Plan-and-Solve and Reflection. Explain why.
