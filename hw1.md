@@ -1,6 +1,12 @@
 #　1　STATIC　OPTIMIZATION
 ## 1.1 OPTIMIZATION WITH CONSTRAINTS
+The sample mean is
 
+$$
+\bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i
+$$
+
+and this estimator is unbiased.
 It is desired to determine a control vector $u \in R^m$ that results in a minimum cost $L(u)$.
 
 To analyze how $u$ affects $L(u)$, we can express the variation of $L$ as:
