@@ -19,13 +19,17 @@ Thought -> Action -> Observation loop
 * **Observation (Observing)**: This is the result returned from the external tool after executing the Action, such as a summary of search results or an API return value.
 
 The process can be expressed as:
+
 $$
 (th_t, a_t)=\pi (q, (a_1,o_1),(a_2,o_2),...(a_{t-1}, o_{t-1}))
 $$ 
+
 At each time step *t*, the agent’s policy $\pi$ generates the current thought $th_t$ and action $a_t$ based on the initial question $q$ and the historical action-observation pairs $((a_1,o_1),(a_2,o_2),...(a_{t-1}, o_{t-1}))$.
+
 $$
 o_t=T(a_t)
 $$
+
 Observation result is the output of tool $T$ in the environment executing action $a_t$ 
 <center>
 
@@ -121,12 +125,18 @@ To solve the problem that chain-of-thought easily "goes off track" when handling
 2. **Solving Phase**: obtaining the complete plan, strictly execute according to the steps in the plan, one by one.
 
 The two-stage process can be express as:
+
 $$
 P=\pi_{plan}(q)
-$$The planning model $\pi_{plan}$  generates a plan $P=(p_1, p_2, ..., p_n)$ containing $n$ steps based on the original question $q$
+$$
+
+The planning model $\pi_{plan}$  generates a plan $P=(p_1, p_2, ..., p_n)$ containing $n$ steps based on the original question $q$
+
 $$
 s_i=\pi_{solve}(q, P, (s_1, s_2, ..., s_{i-1}))
-$$Execution model $\pi_{solve}$  outputs solution $𝑠_𝑖$ which depend on the original question $q$, the complete plan *P*, and the execution results of all previous steps $(s_1, s_2, ..., s_{i-1})$:
+$$
+
+Execution model $\pi_{solve}$  outputs solution $𝑠_𝑖$ which depend on the original question $q$, the complete plan *P*, and the execution results of all previous steps $(s_1, s_2, ..., s_{i-1})$:
 
 <center>
 
@@ -208,12 +218,18 @@ Execute -> Reflect -> Refine
 3. **Refinement**: based on  the "first draft" and "feedback" generates a more complete "revised draft."
 
 The  iterative optimization process can be expressed as:
+
 $$
 F_i=\pi_{reflect}(\text{task}, O_i)
-$$Reflection model $\pi_{reflect}$  generates feedback $𝐹_𝑖$ for output produced by the 𝑖-th iteration $O_𝑖$.
+$$
+
+Reflection model $\pi_{reflect}$  generates feedback $𝐹_𝑖$ for output produced by the 𝑖-th iteration $O_𝑖$.
+
 $$
 O_{i+1}=\pi_{refine}(\text{task}, O_i, F_i)
-$$The refinement model $\pi_{refine}$  combines the original task, the previous version's output, and feedback to generate a new version's output $O_{𝑖+1}$
+$$
+
+The refinement model $\pi_{refine}$  combines the original task, the previous version's output, and feedback to generate a new version's output $O_{𝑖+1}$
 
 ##### Reflection: pros
 * Pros
