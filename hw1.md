@@ -250,6 +250,7 @@ $$The refinement model $\pi_{refine}$  combines the original task, the previou
 
     ![ReAct architecture](./images/pydantic.png "ReAct architecture")
     Figure 5. *pydantic*
+   
     </center>
 
     modifying the code to use pydantic class:
