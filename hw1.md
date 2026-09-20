@@ -1,18 +1,13 @@
 #　1　STATIC　OPTIMIZATION
 ## 1.1 OPTIMIZATION WITH CONSTRAINTS
-The sample mean is
 
-$$
-\bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i
-$$
-
-and this estimator is unbiased.
 It is desired to determine a control vector $u \in R^m$ that results in a minimum cost $L(u)$.
 
 To analyze how $u$ affects $L(u)$, we can express the variation of $L$ as:
 $$
 dL = L(u+du) - L(u).
-$$ $du$ denotes a change in vector $u$. By substituting the Taylor expansion into this definition and subtracting $L(u)$ from both sides, we obtain the final expression for the variation:
+$$ 
+$du$ denotes a change in vector $u$. By substituting the Taylor expansion into this definition and subtracting $L(u)$ from both sides, we obtain the final expression for the variation:
 $$
 dL = L_u^Tdu + \frac{1}{2}du^TL_{uu}du + O(3).
 $$where:
