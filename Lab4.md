@@ -20,7 +20,8 @@ Thought -> Action -> Observation loop
 The process can be expressed as:
 $$
 (th_t, a_t)=\pi (q, (a_1,o_1),(a_2,o_2),...(a_{t-1}, o_{t-1}))
-$$ At each time step *t*, the agent’s policy $\pi$ generates the current thought $th_t$ and action $a_t$ based on the initial question $q$ and the historical action-observation pairs $((a_1,o_1),(a_2,o_2),...(a_{t-1}, o_{t-1}))$.
+$$ 
+At each time step *t*, the agent’s policy $\pi$ generates the current thought $th_t$ and action $a_t$ based on the initial question $q$ and the historical action-observation pairs $((a_1,o_1),(a_2,o_2),...(a_{t-1}, o_{t-1}))$.
 $$
 o_t=T(a_t)
 $$
