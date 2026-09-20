@@ -4,13 +4,17 @@
 It is desired to determine a control vector $u \in R^m$ that results in a minimum cost $L(u)$.
 
 To analyze how $u$ affects $L(u)$, we can express the variation of $L$ as:
+
 $$
 dL = L(u+du) - L(u).
 $$ 
+
 $du$ denotes a change in vector $u$. By substituting the Taylor expansion into this definition and subtracting $L(u)$ from both sides, we obtain the final expression for the variation:
+
 $$
 dL = L_u^Tdu + \frac{1}{2}du^TL_{uu}du + O(3).
 $$
+
 where:
 * $L_{u}$ is the gradient vector (first-order partial derivatives) evaluated at $u$.
 
@@ -19,12 +23,18 @@ where:
 * $O(3)$ represents third- and higher-order terms.
 
 For a critical point 
+
 $$
 L_u = 0.
-$$ For a critical point to be a local minimum, it is required that
+$$ 
+
+For a critical point to be a local minimum, it is required that
+
 $$
 dL = \frac{1}{2}du^TL_{uu}du + O(3) \gt 0, \text{for any }du
-$$ which is guaranteed when $L_{uu} \gt 0$ (positive definite).
+$$ 
+
+which is guaranteed when $L_{uu} \gt 0$ (positive definite).
 
 The properties of $L_{uu}$ determine the local geometry of \(L(u)\) around a critical point:
 * Negative definite ($L_{uu} < 0 $), a local maximum
