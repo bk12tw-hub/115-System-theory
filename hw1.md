@@ -48,24 +48,100 @@ Now let the cost be $L(x, u)$, a function of the control vector $u$ and an state
 $$f(x,u)= 0.$$ For any $u$, above equation provides $n$ scalar equations that determine the $x$.
 
 Following the previous approach, we find local minimum conditions under $f(x,u)=0$ by Taylor-expanding $dL$.
+
 $$
 dL = L_x^T dx + L_u^T du + \frac{1}{2} \begin{bmatrix} dx^T & du^T \end{bmatrix} \begin{bmatrix} L_{xx} & L_{xu} \\ L_{ux} & L_{uu} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix} + O(3).
-$$ For a point to be a critical point, following equations need to be satisfied:
+$$ 
+
+### Necessary conditions at critical point
+At a stationary point, $dL = 0$ to first-order approximation for arbitrary increments $du$ when $df = 0$. Consequently, a critical point must satisfy the following equations
+
 $$
 \begin{align}
 dL &= L_x^T dx + L_u^T du = 0 \\
 df &= f_x dx + f_u du = 0
 \end{align}
-$$ From $(2)$ we get
-$$dx = -f_x^{-1} f_udu$$ Substituting this into $(1)$ yields
+$$ 
+
+From $(2)$ we get
+
+$$
+dx = -f_x^{-1} f_udu
+$$ 
+
+Substituting this into $(1)$ yields
+
 $$ 
 \begin{align*}
 dL &= L_x^T (-f_x^{-1} f_udu) + L_u^T du \\
 &=(L_u^T - L_x^T f_x^{-1} f_u)du
 \end{align*}
-$$ Holding $f$ constant, the derivative of $L$ with respect to $u$ is therefore:
-$$\frac{\partial L}{\partial u}\bigg|_{df=0} = (L_u^T - L_x^T f_x^{-1} f_u)^T = L_u-f_u^Tf_x^{-T}L_x$$ Where 
-$$f_x^{-T} = (f_x^{-1})^T$$ and $$L_u = \frac{\partial L}{\partial u}\bigg|_{dx=0}$$ Thus, for $dL = 0$ to hold to first order for arbitrary  $du$ when $df = 0$, we must have:
-$$L_u - f_u^Tf_x^{-T}L_x = 0 $$ Which is a **necessary condition** for a minimum. 
+$$ 
+
+Holding $f$ constant, the derivative of $L$ with respect to $u$ is therefore:
+
+$$
+\frac{\partial L}{\partial u}\bigg|_{df=0} = (L_u^T - L_x^T f_x^{-1} f_u)^T = L_u-f_u^Tf_x^{-T}L_x
+$$ 
+
+Where
+
+$$
+f_x^{-T} = (f_x^{-1})^T
+$$ 
+
+and 
+
+$$
+L_u = \frac{\partial L}{\partial u}\bigg|_{dx=0}
+$$ 
+
+Thus, for $dL = 0$ to hold to first order for arbitrary  $du$ when $df = 0$, we must have:
+
+$$
+\begin{align}
+L_u - f_u^Tf_x^{-T}L_x = 0 
+\end{align}
+$$ 
+
+Which is a **necessary condition** for a minimum. 
+
+Let's explore two alternative ways to obtain $(3)$. 
+
+####  Lagrange multiplier 
+First write $(1)(2)$ as:
+
+$$
+\begin{bmatrix} dL \\ df \end{bmatrix} = \begin{bmatrix} L_{x}^T & L_{u}^T \\ f_{x} & f_{u} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix}=0
+$$
+
+The linear system must yield a coherent solution. Algebraically, this system is represented by an \((n + 1) \times (n + m)\) coefficient matrix. 
+
+A strict critical point implies a state of geometric tangency, where the gradient of $L$ becomes aligned with the gradient of the constraints $f$. For this specific geometric alignment to occur, the coefficient matrix must lose full row rank; its rank must be less than \(n + 1\). This reduction in rank dictates that the rows of the matrix are linearly dependent, which guarantees that there exist  $n$-dimensional vector $\lambda$ such that
+
+$$
+\begin{bmatrix} 1 & \lambda^T \end{bmatrix}\begin{bmatrix} L_{x}^T & L_{u}^T \\ f_{x} & f_{u} \end{bmatrix}=0
+$$
+
+From above, we get:
+
+$$
+\begin{align}
+L_x^T + \lambda^Tf_x &= 0 \\
+L_u^T + \lambda^Tf_u &=0
+\end{align}
+$$
+
+Solving $(4)$ for $\lambda$ and  substituting in the $(5)$ condition:
+
+$$
+\begin{align*}
+\lambda^T = -L_x^Tf_x^{-1} \\
+L_u^T + (-L_x^Tf_x^{-1})f_u &=0
+\end{align*}
+$$
+
+Again yields $(3)$, where the vector $\lambda$ is called **Lagrange multiplier**
 
 
+####  Hamiltonian function
