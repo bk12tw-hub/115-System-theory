@@ -157,3 +157,106 @@ Thus, $-\lambda$ represents the partial derivative of $L$ with respect to the co
 
 
 ####  Hamiltonian function
+
+As a third method of obtaining $(3)$,is the **Hamiltonian function**
+
+$$
+\begin{align}
+H(x,u,\lambda) = L(x, u) + \lambda^Tf(x, u).
+\end{align}
+$$
+
+Where $λ ∈ R^n$ is an undetermined Lagrange multiplier. To determine $x$, $u$ and $λ$, resulting in a critical point, we assume that:
+
+$$
+dH = H_x^Tdx + H_u^Tdu + H_{\lambda}^Td\lambda.
+$$
+
+First that:
+
+$$
+\begin{align}
+H_{\lambda} = f(x, u)=0.
+\end{align}
+$$
+
+Which is the constraint relation. And so that:
+
+$$
+H|_{f=0} = L
+$$
+
+Not taking the coupling between $du$ and $dx$ into account, it is convenient to choose $\lambda$ such that:
+
+$$
+\begin{align}
+H_x = L_x + f_x^T\lambda=0
+\end{align}
+$$
+
+And assume $(7)(8)$ are satisfied, then:
+
+$$
+dH = dL = H_u^Tdu
+$$
+
+In this conditions $H = L$ and based on $(1)$: $dL=0$ for critical point, finnally we get:
+
+$$
+\begin{align}
+H_u = 0
+\end{align}
+$$
+
+In summary, necessary conditions for a minimum point of $L(x, u)$ that also satisfies the constraint $f (x, u) = 0$ are
+
+$$
+\begin{align*}
+\frac{\partial H}{\partial \lambda} &= f = 0.\\
+\frac{\partial H}{\partial x} &= L_x + f_x^T\lambda = 0.\\
+\frac{\partial H}{\partial u} &= L_u + f_u^T\lambda = 0.
+\end{align*}
+$$
+
+Introducing Lagrange multipliers transforms the problem of minimizing $L(x, u)$ under the constraint $f(x, u) = 0$ into an minimization of the Hamiltonian $H(x, u, \lambda)$ without constraints.
+
+### Sufficient conditions at critical point
+While conditions $(7)(8)(9)$ determine a stationary point, we now derive a test to guarantee that this point is a local minimum. 
+
+$$
+\begin{align}
+dL &= \begin{bmatrix}L_x^T && L_u^T \end{bmatrix}\begin{bmatrix}dx \\ du \end{bmatrix} + \frac{1}{2} \begin{bmatrix} dx^T & du^T \end{bmatrix} \begin{bmatrix} L_{xx} & L_{xu} \\ L_{ux} & L_{uu} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix} + O(3). \\ 
+df &=  \begin{bmatrix}f_x && f_u \end{bmatrix}\begin{bmatrix}dx \\ du \end{bmatrix} + \frac{1}{2} \begin{bmatrix} dx^T & du^T \end{bmatrix} \begin{bmatrix} f_{xx} & f_{xu} \\ f_{ux} & f_{uu} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix} + O(3).
+\end{align}
+$$ 
+
+Recall that $(6)$, and use Hamiltonian to rewrite the equtions:
+
+$$
+\begin{align}
+\begin{bmatrix}1 && \lambda^T \end{bmatrix} \begin{bmatrix}dL \\ df \end{bmatrix}=\begin{bmatrix}H_x^T && H_u^T \end{bmatrix}\begin{bmatrix}dx \\ du \end{bmatrix}+ \frac{1}{2} \begin{bmatrix} dx^T & du^T \end{bmatrix} \begin{bmatrix} H_{xx} & H_{xu} \\ H_{ux} & H_{uu} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix} + O(3).
+\end{align}
+$$
+
+To find sufficient conditions for a minimum, we examine the second-order term. We must first account for the dependence of $dx$ on $du$ in $(12)$. Assuming we are at a critical point where $H_x = 0$, $H_u = 0$, and $df = 0$, it follows that:
+
+$$
+dx = -f_x^{-1} f_udu + O(2)
+$$
+
+Substituting this relation into $(12)$ yields
+
+$$
+dL = \frac{1}{2}du^T \begin{bmatrix} -f_u^Tf_x^{-T} && I \end{bmatrix} \begin{bmatrix} H_{xx} & H_{xu} \\ H_{ux} & H_{uu} \end{bmatrix} \begin{bmatrix} -f_x^{-1}f_u \\ I \end{bmatrix}du + O(3).
+$$
+
+To ensure a minimum, $dL$  should be **positive for all increments $du$.** Which is guaranteed when the Hessian matrix with $df=0$ :
+
+$$
+\begin{align}
+L_{uu}|_{f} &= \begin{bmatrix} -f_u^Tf_x^{-T} && I \end{bmatrix} \begin{bmatrix} H_{xx} & H_{xu} \\ H_{ux} & H_{uu} \end{bmatrix} \begin{bmatrix} -f_x^{-1}f_u \\ I \end{bmatrix} \\
+&= H_{uu} - f_u^T f_x^{-T} H_{xu} - H_{ux} f_x^{-1} f_u +  - f_u^T f_x^{-T} H_{xx} f_x^{-1} f_u
+\end{align}
+$$
+
+is positive definite. If the constraint $f(x, u)$ is identically zero for all $x$ and $u$, then $(14)$ reduces to $L_{uu}$. If $(14)$ is negative definite (or indefinite), the stationary point is a constrained maximum (or saddle point).
