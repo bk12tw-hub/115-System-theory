@@ -141,7 +141,19 @@ L_u^T + (-L_x^Tf_x^{-1})f_u &=0
 \end{align*}
 $$
 
-Again yields $(3)$, where the vector $\lambda$ is called **Lagrange multiplier**
+Again yields $(3)$, where the vector $\lambda$ is called **Lagrange multiplier**. Let $du=0$ in $(1)(2)$ and substitute $dx$:
+
+$$
+dL = L_x^T f_x^{-1}df.
+$$
+
+Which can be 
+
+$$
+\frac{\partial L}{\partial f}\bigg|_{du=0} = (L_x^T f_x^{-1})^T = -\lambda.
+$$
+
+Thus, $-\lambda$ represents the partial derivative of $L$ with respect to the constraint $f$ while holding the control $u$ constant. This captures how changes in the constraints affect the performance index when the control remains fixed.
 
 
 ####  Hamiltonian function
