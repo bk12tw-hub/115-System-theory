@@ -49,9 +49,9 @@ $$f(x,u)= 0.$$ For any $u$, above equation provides $n$ scalar equations that de
 
 Following the previous approach, we find local minimum conditions under $f(x,u)=0$ by Taylor-expanding $dL$.
 
-$$
+```math
 dL = L_x^T dx + L_u^T du + \frac{1}{2} \begin{bmatrix} dx^T & du^T \end{bmatrix} \begin{bmatrix} L_{xx} & L_{xu} \\ L_{ux} & L_{uu} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix} + O(3).
-$$ 
+```
 
 ### Necessary conditions at critical point
 At a stationary point, $dL = 0$ to first-order approximation for arbitrary increments $du$ when $df = 0$. Consequently, a critical point must satisfy the following equations
@@ -111,17 +111,17 @@ Let's explore two alternative ways to obtain $(3)$.
 ####  Lagrange multiplier 
 First write $(1)(2)$ as:
 
-$$
+```math
 \begin{bmatrix} dL \\ df \end{bmatrix} = \begin{bmatrix} L_{x}^T & L_{u}^T \\ f_{x} & f_{u} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix}=0
-$$
+```
 
 The linear system must yield a coherent solution. Algebraically, this system is represented by an \((n + 1) \times (n + m)\) coefficient matrix. 
 
 A strict critical point implies a state of geometric tangency, where the gradient of $L$ becomes aligned with the gradient of the constraints $f$. For this specific geometric alignment to occur, the coefficient matrix must lose full row rank; its rank must be less than \(n + 1\). This reduction in rank dictates that the rows of the matrix are linearly dependent, which guarantees that there exist  $n$-dimensional vector $\lambda$ such that
 
-$$
+```math
 \begin{bmatrix} 1 & \lambda^T \end{bmatrix}\begin{bmatrix} L_{x}^T & L_{u}^T \\ f_{x} & f_{u} \end{bmatrix}=0
-$$
+```
 
 From above, we get:
 
@@ -223,20 +223,20 @@ Introducing Lagrange multipliers transforms the problem of minimizing $L(x, u)$ 
 ### Sufficient conditions at critical point
 While conditions $(7)(8)(9)$ determine a stationary point, we now derive a test to guarantee that this point is a local minimum. 
 
-$$
+```math
 \begin{align}
 dL &= \begin{bmatrix}L_x^T && L_u^T \end{bmatrix}\begin{bmatrix}dx \\ du \end{bmatrix} + \frac{1}{2} \begin{bmatrix} dx^T & du^T \end{bmatrix} \begin{bmatrix} L_{xx} & L_{xu} \\ L_{ux} & L_{uu} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix} + O(3). \\ 
 df &=  \begin{bmatrix}f_x && f_u \end{bmatrix}\begin{bmatrix}dx \\ du \end{bmatrix} + \frac{1}{2} \begin{bmatrix} dx^T & du^T \end{bmatrix} \begin{bmatrix} f_{xx} & f_{xu} \\ f_{ux} & f_{uu} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix} + O(3).
 \end{align}
-$$ 
+```
 
 Recall that $(6)$, and use Hamiltonian to rewrite the equtions:
 
-$$
+```math
 \begin{align}
 \begin{bmatrix}1 && \lambda^T \end{bmatrix} \begin{bmatrix}dL \\ df \end{bmatrix}=\begin{bmatrix}H_x^T && H_u^T \end{bmatrix}\begin{bmatrix}dx \\ du \end{bmatrix}+ \frac{1}{2} \begin{bmatrix} dx^T & du^T \end{bmatrix} \begin{bmatrix} H_{xx} & H_{xu} \\ H_{ux} & H_{uu} \end{bmatrix} \begin{bmatrix} dx \\ du \end{bmatrix} + O(3).
 \end{align}
-$$
+```
 
 To find sufficient conditions for a minimum, we examine the second-order term. We must first account for the dependence of $dx$ on $du$ in $(12)$. Assuming we are at a critical point where $H_x = 0$, $H_u = 0$, and $df = 0$, it follows that:
 
@@ -246,17 +246,17 @@ $$
 
 Substituting this relation into $(12)$ yields
 
-$$
+```math
 dL = \frac{1}{2}du^T \begin{bmatrix} -f_u^Tf_x^{-T} && I \end{bmatrix} \begin{bmatrix} H_{xx} & H_{xu} \\ H_{ux} & H_{uu} \end{bmatrix} \begin{bmatrix} -f_x^{-1}f_u \\ I \end{bmatrix}du + O(3).
-$$
+```
 
 To ensure a minimum, $dL$  should be **positive for all increments $du$.** Which is guaranteed when the Hessian matrix with $df=0$ :
 
-$$
+```math
 \begin{align}
 L_{uu}|_{f} &= \begin{bmatrix} -f_u^Tf_x^{-T} && I \end{bmatrix} \begin{bmatrix} H_{xx} & H_{xu} \\ H_{ux} & H_{uu} \end{bmatrix} \begin{bmatrix} -f_x^{-1}f_u \\ I \end{bmatrix} \\
 &= H_{uu} - f_u^T f_x^{-T} H_{xu} - H_{ux} f_x^{-1} f_u +  - f_u^T f_x^{-T} H_{xx} f_x^{-1} f_u
 \end{align}
-$$
+```
 
 is positive definite. If the constraint $f(x, u)$ is identically zero for all $x$ and $u$, then $(14)$ reduces to $L_{uu}$. If $(14)$ is negative definite (or indefinite), the stationary point is a constrained maximum (or saddle point).
